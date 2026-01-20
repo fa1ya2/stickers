@@ -1,8 +1,6 @@
 name: Build Android APK
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -23,14 +21,14 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Grant execute permission
-        run: chmod +x ./android/gradlew
+        run: chmod +x ./Android/gradlew
 
       - name: Build APK
-        working-directory: android
+        working-directory: Android
         run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: WhatsApp-Sticker-APK
-          path: android/app/build/outputs/apk/debug/*.apk
+          path: Android/app/build/outputs/apk/debug/*.apk
