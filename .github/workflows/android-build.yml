@@ -24,9 +24,10 @@ jobs:
         run: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > Android/local.properties
 
-      - name: Set custom applicationId
+      - name: Patch application identifiers
         run: |
           sed -i 's/com.example.samplestickerapp/com.fa1ya2.whatsappstickers/g' Android/app/build.gradle
+          sed -i 's/com.example.samplestickerapp/com.fa1ya2.whatsappstickers/g' Android/app/src/main/AndroidManifest.xml
 
       - name: Grant execute permission
         run: chmod +x ./Android/gradlew
